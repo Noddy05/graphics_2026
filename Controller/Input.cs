@@ -64,7 +64,7 @@ namespace Graphics2026.Controller
         public static bool GetMouseButtonDown(MouseButton button) => window.IsMouseButtonPressed(button);
         public static bool GetMouseButtonUp(MouseButton button) => window.IsMouseButtonReleased(button);
 
-        public static bool GetKeyCombo(Keys[] keys)
+        public static bool GetKeyComboDown(params Keys[] keys)
         {
             bool isPressed = false;
             if (keys.Length == 0)
@@ -78,7 +78,9 @@ namespace Graphics2026.Controller
             return isPressed;
         }
 
-        public static bool ToggleProfilerRecord() => GetKeyCombo([ Keys.F3, Keys.R ]);
-        public static bool PrintProfilerStats() => GetKeyCombo([ Keys.F3, Keys.P ]);
+        public static bool ToggleProfilerRecord() => GetKeyComboDown(Keys.F3, Keys.R);
+        public static bool PrintProfilerStats() => GetKeyComboDown(Keys.F3, Keys.P);
+        public static bool Undo() => GetKeyComboDown(Keys.LeftControl, Keys.Z);
+        public static bool Redo() => GetKeyComboDown(Keys.LeftControl, Keys.Y);
     }
 }

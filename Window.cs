@@ -100,7 +100,8 @@ namespace Graphics2026
             }
 
             cameraUBO.view = Camera.current!.GetCameraMatrix();
-            lightUBO.lightFromDirection = new Vector3(MathF.Cos((float)timeSinceStart), 1, MathF.Sin((float)timeSinceStart));
+            //lightUBO.lightFromDirection = new Vector3(MathF.Cos((float)timeSinceStart), 1, MathF.Sin((float)timeSinceStart));
+            lightUBO.lightFromDirection = new Vector3(0.5f, 2, 2);
 
             if (!Profiler.record)
             {

@@ -2,12 +2,13 @@
 using Graphics2026.Model.Actors.Gizmos;
 using Graphics2026.Model.Game.BuildTools;
 using Graphics2026.Model.SceneManagement;
+using Graphics2026.Shopping.Prefabs;
 using Graphics2026.View;
 using OpenTK.Graphics.OpenGL;
 using OpenTK.Mathematics;
 using OpenTK.Windowing.GraphicsLibraryFramework;
 
-namespace Graphics2026.Shopping
+namespace Graphics2026.Shopping.Tools
 {
     internal class GroundTool : BuildTool
     {
@@ -15,12 +16,9 @@ namespace Graphics2026.Shopping
         private Dictionary<Grid, int[][]> floors = new();
         private int prefabIndex = 1;
 
-        public GroundTool() : base([ SurfaceType.Floor ])
+        public GroundTool() : base([SurfaceType.Floor])
         {
-            isActive = true;
-
-            currentPrefab = AllFloors.GetFloor(prefabIndex).Instantiate();
-            //SceneManager.AddToScene(currentPrefab.renderable!);
+            currentPrefab = PrefabCollection.GetFloor(prefabIndex).Instantiate();
         }
 
         protected override void Update(float deltaTime)
@@ -52,10 +50,10 @@ namespace Graphics2026.Shopping
 
             int floorIndex = floors[grid][gridPosition.X][gridPosition.Y];
 
-            int priceDiff = -AllFloors.GetFloor(prefabIndex).price;
+            int priceDiff = -PrefabCollection.GetFloor(prefabIndex).price;
             if (floorIndex > 0)
             {
-                priceDiff += AllFloors.GetFloor(floorIndex).price;
+                priceDiff += PrefabCollection.GetFloor(floorIndex).price;
             }
             floors[grid][gridPosition.X][gridPosition.Y] = prefabIndex;
             Player.ChangeBalance(priceDiff, position);

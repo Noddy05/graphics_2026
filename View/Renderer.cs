@@ -1,14 +1,12 @@
 ﻿using Graphics2026.Model.Actors;
 using Graphics2026.Model.Actors.Gizmos;
-using Graphics2026.Model.Game.BuildTools;
 using Graphics2026.Model.SceneManagement;
-using static System.Formats.Asn1.AsnWriter;
 
 namespace Graphics2026.View
 {
     internal class Renderer
     {
-        public Dictionary<SurfaceType, bool> drawSurfaces = new();
+        public readonly Dictionary<SurfaceType, bool> drawSurfaces = new();
 
         public Renderer()
         {

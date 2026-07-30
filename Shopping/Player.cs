@@ -1,4 +1,5 @@
 ﻿using Graphics2026.Model.Game.BuildTools;
+using Graphics2026.Shopping.Tools;
 using OpenTK.Mathematics;
 
 namespace Graphics2026.Shopping
@@ -12,7 +13,11 @@ namespace Graphics2026.Shopping
         {
             builder = new Builder();
             builder.AddTool(new GroundTool());
+            builder.AddTool(new WallTool());
         }
+
+        public static long GetBalance() => balance; 
+        public static bool CanAfford(int cost) => balance >= cost;
 
         public static void SetBalance(long newBalance) => balance = newBalance;
 
